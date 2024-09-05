@@ -1,16 +1,22 @@
 <?php
 
-    if(isset($_POST)){
-        
-        $db = new mysqli("localhost", "root", "", "discoteca"); //<---Conexão com o banco de dados
-    
-        
-        $query = "update disco set Titulo_disc = '{$_POST['Titulo_disc']}', Ano = {$_POST['Ano']} , Artista = '{$_POST['Artista']}' , Capa = '{$_POST['Capa']}' where ID_disc = {$_POST['ID_disc']}"; //<---Query de consulta
+// Verifica se o formulário foi enviado
+if (isset($_POST)) {
+    // Conecta ao banco de dados
+    $db = new mysqli("localhost", "root", "", "discoteca");
 
-        
-        $resultado = $db->query($query); //<--- Executa a consulta e armazena o resultado
+    // Query de atualização dos dados do disco
+    $query = "UPDATE disco SET 
+        Titulo_disc = '{$_POST['titulo']}', 
+        Ano = {$_POST['ano']}, 
+        Artista = '{$_POST['autor']}', 
+        Capa = '{$_POST['capa']}' 
+        WHERE ID_disc = {$_POST['idlivro']}";
 
-        header("location:index.php");
-    }
+    // Executa a query
+    $db->query($query);
 
+    // Redireciona para a página principal
+    header("Location: index.php");
+}
 ?>

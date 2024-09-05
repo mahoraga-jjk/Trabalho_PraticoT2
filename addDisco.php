@@ -1,11 +1,15 @@
 <?php
 
-$db = new mysqli("localhost","root","","discoteca");
+// Conexão com o banco de dados
+$db = new mysqli("localhost", "root", "", "discoteca");
 
-$query = "insert into disco (Titulo_disc, Artista, Ano, Capa) values ('{$_POST['Titulo_disc']}','{$_POST['Artista']}',{$_POST['ano']},'{$_POST['Capa']}')";
+// Query para inserir o novo disco
+$query = "INSERT INTO disco (Titulo_disc, Artista, Ano, Capa) VALUES 
+    ('{$_POST['titulo']}', '{$_POST['autor']}', {$_POST['ano']}, '{$_POST['capa']}')";
 
+// Executa a query
 $db->query($query);
 
-header("location:index.php");
-
+// Redireciona para a página principal
+header("Location: index.php");
 ?>

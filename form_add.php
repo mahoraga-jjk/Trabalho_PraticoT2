@@ -4,23 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Adicionar Disco</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<h1>Adicione novo Disco!</h1>
-    <form method='post' action='addDisco.php'>
-        <label for=Titulo_disc>Título</label>
-        <input type=text id=titulo required name=titulo>
-        <br>
-        <label for=Ano>Ano</label>
-        <input type=number id=ano required name=ano>
-        <br>
-        <label for=Artista>Artista</label>
-        <input type=text id=autor required name=autor>
-        <br>
-        <label for=Capa>Capa</label>
-        <input type=text id=capa required name=capa>      <!--Resolver a questão da adição de imagem...-->
-        <br>
-        <input type=submit name=botao value='Adicionar'>
-    </form>
+    <div class="container">
+        <h1>Adicionar Novo Disco</h1>
+        <form method="post" action="addDisco.php">
+            <label for="titulo">Título do Disco</label>
+            <input type="text" id="titulo" name="titulo" required>
+            <br>
+            
+            <label for="ano">Ano de Lançamento</label>
+            <input type="number" id="ano" name="ano" required>
+            <br>
+            
+            <label for="autor">Artista</label>
+            <input type="text" id="autor" name="autor" required>
+            <br>
+            
+            <label for="capa">URL da Capa</label>
+            <input type="text" id="capa" name="capa" required>
+            <br>
+            
+            <input type="submit" value="Adicionar Disco">
+        </form>
+    </div>
 </body>
 </html>

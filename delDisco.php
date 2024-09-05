@@ -1,11 +1,14 @@
 <?php
 
-$db = new mysqli("localhost","root","","discoteca");
+// Conexão com o banco de dados
+$db = new mysqli("localhost", "root", "", "discoteca");
 
-$query = "delete from disco where ID_disc = {$_GET['ID_disc']}";
+// Query para deletar o disco
+$query = "DELETE FROM disco WHERE ID_disc = {$_GET['ID_disc']}";
 
+// Executa a query
 $db->query($query);
 
-header("location:index.php");
-
+// Redireciona para a página principal
+header("Location: index.php");
 ?>

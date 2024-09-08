@@ -1,73 +1,22 @@
-<<<<<<< HEAD
-=======
-<?php header("Content-type: text/css");
-?>
->>>>>>> parent of 3a7dfac (1.2)
+
 body {
     font-family: Arial, sans-serif;
-    background-color: #0d1b2a;
-    color: #f0f0f0;
+    background-color: #036e8b;
     margin: 0;
     padding: 20px;
 }
 
 h1 {
     text-align: center;
-    color: #a6dcef;
-    font-size: 2.5rem;
-    margin-bottom: 30px;
 }
 
-.header img {
-    display: block;
-    margin: 0 auto;
-    width: 150px;
-}
-
-table {
-    width: 100%;
-    margin-bottom: 20px;
+table{
+    border-width: 3px;
+    border-style: solid;
+    border-color: rgb(255, 0, 162);
     border-collapse: collapse;
-    background-color: #1b263b;
-    border: 1px solid #415a77;
-}
-
-table th, table td {
-    padding: 15px;
     text-align: center;
-    border: 1px solid #415a77;
-}
-
-table th {
-    background-color: #415a77;
-    color: #f0f0f0;
-}
-
-table td {
-    color: #f0f0f0;
-}
-
-.capa {
-    width: 100px;
-    height: auto;
-}
-
-.icon {
-    width: 30px;
-    height: auto;
-    cursor: pointer;
-}
-
-.icon:hover {
-    opacity: 0.8;
-}
-
-.add-disco {
-    text-align: center;
-    margin-top: 20px;
-}
-
-.add-disco a img {
-    width: 50px;
-    height: auto;
+    width: 100%;
+    font-size: 18px;
+    margin: 4px;
 }

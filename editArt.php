@@ -5,9 +5,8 @@
         $db = new mysqli("localhost", "root", "", "discoteca"); //<---Conexão com o banco de dados
     
         
-        $query = "update disco set Titulo_disc = '{$_POST['Titulo_disc']}', Ano = {$_POST['Ano']} , Artista = '{$_POST['Artista']}' , Capa = '{$_POST['Capa']}' where ID_disc = {$_POST['ID_disc']}"; //<---Query de consulta
+        $query = "update artista set Nome_Art = '{$_POST['Nome_Art']}' where ID_Art = {$_POST['ID_Art']}"; //<---Query de consulta
 
-        
         $resultado = $db->query($query); //<--- Executa a consulta e armazena o resultado
 
         header("location:index.php");

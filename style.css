@@ -1,3 +1,8 @@
+<<<<<<< HEAD
+=======
+<?php header("Content-type: text/css");
+?>
+>>>>>>> parent of 3a7dfac (1.2)
 body {
     font-family: Arial, sans-serif;
     background-color: #0d1b2a;

@@ -39,7 +39,8 @@ if ($result->num_rows > 0) {
         echo "<td><img src='{$disc['Capa']}'></td>";
         echo "<td>
                 <a href='delDisco.php?ID_disc={$disc['ID_disc']}'>Apagar</a> | 
-                <a href='form_edit.php?ID_disc={$disc['ID_disc']}'>Editar</a>
+                <a href='form_edit.php?ID_disc={$disc['ID_disc']}'>Editar</a> |
+                 <a href='empr_devo.php?'>emp/dev</a>
             </td>";
         echo "</tr>";
     }

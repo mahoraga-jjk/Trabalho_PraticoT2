@@ -28,10 +28,10 @@ if ($result->num_rows > 0) {
         </tr>";
 
             // Loop para exibir cada disco
-    while ($art = $art_res->fetch_assoc()) {
-        echo "<td>{$disc['Nome_Art']}</td>";
+    while ($art = $result->fetch_assoc()) {
+        echo "<td>{$art['Nome_Art']}</td>";
         echo "<td>
-                <a href='delArt.php?ID_Srt={$art['ID_Art']}'>Apagar Artista</a> | 
+                <a href='delArt.php?ID_Art={$art['ID_Art']}'>Apagar Artista</a> | 
                 <a href='form_editArt.php?ID_Art={$art['ID_Art']}'>Editar Artista</a>
             </td>";
         echo "</tr>";

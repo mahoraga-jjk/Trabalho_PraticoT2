@@ -6,6 +6,6 @@ $query = "delete from artista where ID_Art = {$_GET['ID_Art']}";
 
 $db->query($query);
 
-header("location:index.php");
+header("location:artIndex.php");
 
 ?>

@@ -7,7 +7,7 @@ if (isset($_GET)) {
 
     $resultado = $db->query($query);
 
-    $disc = $resultado->fetch_array();
+    $art = $resultado->fetch_array();
 }
 
 ?>

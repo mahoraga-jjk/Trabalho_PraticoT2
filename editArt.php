@@ -9,7 +9,7 @@
 
         $resultado = $db->query($query); //<--- Executa a consulta e armazena o resultado
 
-        header("location:index.php");
+        header("location:artIndex.php");
     }
 
 ?>

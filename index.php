@@ -36,7 +36,7 @@ if ($result->num_rows > 0) {
         echo "<td>{$disc['Titulo_disc']}</td>";
         echo "<td>{$disc['Nome_Art']}</td>";
         echo "<td>{$disc['Ano']}</td>";
-        echo "<td>{$disc['Capa']}</td>";
+        echo "<td><img src='{$disc['Capa']}'></td>";
         echo "<td>
                 <a href='delDisco.php?ID_disc={$disc['ID_disc']}'>Apagar</a> | 
                 <a href='form_edit.php?ID_disc={$disc['ID_disc']}'>Editar</a>

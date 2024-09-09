@@ -6,12 +6,12 @@ if ($db->connect_error) {
 }
 // Inserir o disco na tabela `artista`
 $query = $db->prepare("INSERT INTO artista (Nome_Art) VALUES (?)");
-$query->bind_param("ssis", $_POST['Nome_Art']);
+$query->bind_param("s", $_POST['Nome_Art']);
 
 if (!$query->execute()) {
     die("Erro ao executar a consulta: " . $query->error);
 }
 
-header("Location: index.php");
+header("Location: artIndex.php");
 exit();
 ?>

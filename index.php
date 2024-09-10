@@ -14,6 +14,10 @@ echo "<br>";
 
 echo "<a href='form_add.php'>Adicionar Novo Disco</a>";
 
+echo "<br>";
+
+echo "<a href='listar.php?'>Listar Discos</a>";
+
 // Consulta para buscar todos os discos
 $query = "SELECT disco.Titulo_disc, artista.Nome_Art, disco.Ano, disco.Capa, disco.ID_disc 
         FROM disco 
@@ -40,7 +44,7 @@ if ($result->num_rows > 0) {
         echo "<td>
                 <a href='delDisco.php?ID_disc={$disc['ID_disc']}'>Apagar</a> | 
                 <a href='form_edit.php?ID_disc={$disc['ID_disc']}'>Editar</a> |
-                 <a href='empr_devo.php?'>emp/dev</a>
+                <a href='empr_devo.php?ID_disc={$disc['ID_disc']}'>emp/dev</a> |
             </td>";
         echo "</tr>";
     }

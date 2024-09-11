@@ -2,44 +2,41 @@
 <?php
 if (isset($_GET)) {
     $db  = new mysqli("localhost", "root", "", "discoteca");
-
-    $query = "Select * from emprestimo join disco on emprestimo.ID_disc_emp = disco.ID_disc where ID_disc_emp = {$_GET['ID_disc_emp']}";
-
+    $query = "SELECT * FROM emprestimo JOIN disco ON emprestimo.ID_disc = disco.ID_disc WHERE emprestimo.ID_disc = {$_GET['ID_disc']}";
     $resultado = $db->query($query);
-
     $emp = $resultado->fetch_array();
 }
-
 ?>
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Editar disco</title>
+    <title>Devolução de Disco</title>
 </head>
 <body>
-    <h1>Quem pegou imprestado?</h1>
-    <form method='post' action='emprestimo.php'>
+    <h1>Quem pegou emprestado?</h1>
+    <form method='post' action='devolucao.php'>
         <label for=nome>Nome</label>
         <?php
-            echo "<input type=text id=nome required name=nome value='{$emp['nome']}'>";
+            echo "<input type=text id=nome required name=nome value='{$emp['nome']}' readonly>";
         ?>
         <br>
-        <label for=data>Data</label>
+        <label for=data>Data de Empréstimo</label>
         <?php
-            echo "<input type=time id=data required name=data value={$emp['data']}>";
+            echo "<input type=text id=data required name=data value='{$emp['data']}' readonly>";
         ?>
+        <br>
+        <label for=data_dev>Data de Devolução</label>
+        <input type="date" id="data_dev" required name="data_dev">
         <br>
         <label for=email>E-mail</label>
         <?php
-            echo "<input type=text id=email required name=email value={$emp['email']}>";
+            echo "<input type=text id=email required name=email value='{$emp['email']}' readonly>";
         ?>      
         <br>
-      
-        <br>
-        <input type=submit name=botao value='Editar'>
+        <input type="hidden" name="ID_emp" value="<?= $_GET['ID_emp'] ?>">
+        <input type=submit name=botao value='Registrar Devolução'>
     </form>
 </body>
 </html>

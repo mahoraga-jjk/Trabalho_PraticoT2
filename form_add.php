@@ -24,7 +24,7 @@ if ($db->connect_error) {
     die("Erro de conexão: " . $db->connect_error);
 }
 
-// Consulta para buscar todos os discos
+// Consulta para buscar todos os artistas
 $query = "SELECT artista.Nome_Art, artista.ID_Art 
         FROM artista";
 $result = $db->query($query);
@@ -32,7 +32,7 @@ $result = $db->query($query);
 if ($result->num_rows > 0) {
     echo "<select name = 'Nome_Art'>";
 
-            // Loop para exibir cada disco
+            // Loop para exibir cada artistas
     while ($art = $result->fetch_assoc()) {
         echo "<option value={$art['ID_Art']}>{$art['Nome_Art']}</option>";
     }

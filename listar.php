@@ -1,3 +1,4 @@
+<link rel="stylesheet" type="text/css" href="style.css" />
 <?php
 function listarDiscos($orderBy = 'Titulo_disc') {
     // Conecta ao banco de dados

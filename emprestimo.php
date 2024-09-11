@@ -4,7 +4,7 @@ $db = new mysqli("localhost", "root", "", "discoteca");
 if ($db->connect_error) {
     die("Erro de conexão: " . $db->connect_error);
 }
-// Inserir o disco na tabela `artista`
+//
 $query = $db->prepare("INSERT INTO emprestimo (nome, data, email, ID_emp) VALUES (?, ?, ?, ?)");
 $query->bind_param("sisi", $_POST['nome'], $_POST['data'], $_POST['email'], $_POST['ID_emp']);
 

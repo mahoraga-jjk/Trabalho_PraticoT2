@@ -1,5 +1,6 @@
 <link rel="stylesheet" type="text/css" href="style.css" />
 <?php
+
 if (isset($_GET)) {
     $db  = new mysqli("localhost", "root", "", "discoteca");
     $query = "SELECT * FROM emprestimo JOIN disco ON emprestimo.ID_disc = disco.ID_disc WHERE emprestimo.ID_disc = {$_GET['ID_disc']}";

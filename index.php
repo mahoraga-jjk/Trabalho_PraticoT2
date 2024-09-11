@@ -8,15 +8,11 @@ if ($db->connect_error) {
 }
 echo "<h1>🎵🎶🎶Discoteca🎶🎶🎵</h1>";
 
-echo "<a href='artIndex.php'>Ir para Artistas</a>";
-
-echo "<br>";
-
-echo "<a href='form_add.php'>Adicionar Novo Disco</a>";
-
-echo "<br>";
-
-echo "<a href='listar.php?'>Listar Discos</a>";
+echo "<div class='button-container'>";
+echo "<a class='btn' href='artIndex.php'>Ir para Artistas</a>";
+echo "<a class='btn' href='form_add.php'>Adicionar Novo Disco</a>";
+echo "<a class='btn' href='listar.php'>Listar Discos</a>";
+echo "</div>";
 
 // Consulta para buscar todos os discos
 $query = "SELECT disco.Titulo_disc, artista.Nome_Art, disco.Ano, disco.Capa, disco.ID_disc 

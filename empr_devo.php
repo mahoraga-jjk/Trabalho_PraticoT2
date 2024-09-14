@@ -1,11 +1,25 @@
 <link rel="stylesheet" type="text/css" href="style.css" />
-<?php
+<?php 
+if (isset($_GET['ID_disc'])) {
+    // Conectando ao banco de dados
+    $db = new mysqli("localhost", "root", "", "discoteca");
+    if ($db->connect_error) {
+        die("Erro de conexão: " . $db->connect_error);
+    }
 
-if (isset($_GET)) {
-    $db  = new mysqli("localhost", "root", "", "discoteca");
-    $query = "SELECT * FROM emprestimo JOIN disco ON emprestimo.ID_disc = disco.ID_disc WHERE emprestimo.ID_disc = {$_GET['ID_disc']}";
-    $resultado = $db->query($query);
-    $emp = $resultado->fetch_array();
+    // Consulta apenas a tabela disco para obter informações do disco a ser emprestado
+    $query = $db->prepare("SELECT * FROM disco WHERE ID_disc = ?");
+    $query->bind_param("i", $_GET['ID_disc']);
+    $query->execute();
+    
+    // Obtendo o resultado
+    $resultado = $query->get_result();
+    if ($resultado->num_rows > 0) {
+        $disco = $resultado->fetch_array(); // Guarda as informações do disco
+    } else {
+        echo "Nenhum disco encontrado com esse ID.";
+        exit;
+    }
 }
 ?>
 <!DOCTYPE html>
@@ -13,31 +27,30 @@ if (isset($_GET)) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Devolução de Disco</title>
+    <title>Registrar Empréstimo</title>
 </head>
 <body>
-    <h1>Quem pegou emprestado?</h1>
-    <form method='post' action='devolucao.php'>
-        <label for=nome>Nome</label>
-        <?php
-            echo "<input type=text id=nome required name=nome value='{$emp['nome']}' readonly>";
-        ?>
+    <h1>Registrar Empréstimo</h1>
+    <form method="post" action="emprestimo.php">
+        <label for="Titulo_disc">Disco</label>
+        <input type="text" id="Titulo_disc" name="Titulo_disc" value="<?= $disc['Titulo_disc'] ?>" readonly>
         <br>
-        <label for=data>Data de Empréstimo</label>
-        <?php
-            echo "<input type=text id=data required name=data value='{$emp['data']}' readonly>";
-        ?>
+        
+        <label for="nome">Nome</label>
+        <input type="text" id="nome" required name="nome">
         <br>
-        <label for=data_dev>Data de Devolução</label>
+        
+        <label for="data_dev">Data de Devolução</label>
         <input type="date" id="data_dev" required name="data_dev">
         <br>
-        <label for=email>E-mail</label>
-        <?php
-            echo "<input type=text id=email required name=email value='{$emp['email']}' readonly>";
-        ?>      
+        
+        <label for="email">E-mail</label>
+        <input type="email" id="email" required name="email">
         <br>
-        <input type="hidden" name="ID_emp" value="<?= $_GET['ID_emp'] ?>">
-        <input type=submit name=botao value='Registrar Devolução'>
+
+        <!-- Enviando o ID do disco como campo oculto -->
+        <input type="hidden" name="ID_disc" value="<?= $_GET['ID_disc'] ?>">
+        <input type="submit" name="botao" value="Registrar Empréstimo">
     </form>
 </body>
 </html>

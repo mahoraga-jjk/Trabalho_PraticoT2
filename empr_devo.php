@@ -31,26 +31,22 @@ if (isset($_GET['ID_disc'])) {
 </head>
 <body>
     <h1>Registrar Empréstimo</h1>
-    <form method="post" action="emprestimo.php">
-        <label for="Titulo_disc">Disco</label>
-        <input type="text" id="Titulo_disc" name="Titulo_disc" value="<?= $disc['Titulo_disc'] ?>" readonly>
-        <br>
-        
-        <label for="nome">Nome</label>
-        <input type="text" id="nome" required name="nome">
-        <br>
-        
-        <label for="data_dev">Data de Devolução</label>
-        <input type="date" id="data_dev" required name="data_dev">
-        <br>
-        
-        <label for="email">E-mail</label>
-        <input type="email" id="email" required name="email">
-        <br>
 
-        <!-- Enviando o ID do disco como campo oculto -->
-        <input type="hidden" name="ID_disc" value="<?= $_GET['ID_disc'] ?>">
-        <input type="submit" name="botao" value="Registrar Empréstimo">
+        <form action="emprestimo.php" method="post" class="form">
+
+<!-- Para conseguir enviar o id para o emprestar -->
+<input type="hidden" id="ID_disc" name="ID_disc" value="<?= $_GET['ID_disc'] ?>">
+
+<label for="nome">Nome:</label>
+<input type="text" id="nome" name="nome" required>
+
+<label for="email">E-mail:</label>
+<input type="email" id="email" name="email" required>
+
+<label for="data_dev">Data de devolução:</label>
+<input type="date" id="data_dev" name="data_dev">
+
+<input type="submit" name="botao" value="Registrar Empréstimo">
     </form>
 </body>
 </html>

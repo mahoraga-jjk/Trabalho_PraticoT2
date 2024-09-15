@@ -32,6 +32,18 @@ if ($result->num_rows > 0) {
 
     // Loop para exibir cada disco
     while ($disc = $result->fetch_assoc()) {
+            // Talvez um FOR(){} seja necessário nessa linha
+        $query = "SELECT disco.Titulo_disc 
+FROM disco
+JOIN emprestimo ON emprestimo.ID_disc = disco.ID_disc
+WHERE emprestimo.ID_disc NOT IN (SELECT emprestimo.ID_disc WHERE emprestimo.ID_disc = NULL)";
+
+if($query = null || "") {
+    $action = "Emprestar";
+} else {
+    $action = "Devolver";
+}
+
         echo "<tr>";
         echo "<td>{$disc['Titulo_disc']}</td>";
         echo "<td>{$disc['Nome_Art']}</td>";
@@ -40,7 +52,7 @@ if ($result->num_rows > 0) {
         echo "<td>
                 <a href='delDisco.php?ID_disc={$disc['ID_disc']}'>Apagar</a> | 
                 <a href='form_edit.php?ID_disc={$disc['ID_disc']}'>Editar</a> |
-                <a href='empr_devo.php?ID_disc={$disc['ID_disc']}'>emp/dev</a> |
+                <a href='empr_devo.php?ID_disc={$disc['ID_disc']}'>$action</a> |
             </td>";
         echo "</tr>";
     }
@@ -49,6 +61,8 @@ if ($result->num_rows > 0) {
 } else {
     echo "Nenhum disco encontrado.";
 }
+
+
 
 
 $db->close();

@@ -32,18 +32,18 @@ if ($result->num_rows > 0) {
 
     // Loop para exibir cada disco
     while ($disc = $result->fetch_assoc()) {
-            // Talvez um FOR(){} seja necessário nessa linha
+        for ($i = 0; $i < 5; $i++) {
         $query = "SELECT disco.Titulo_disc 
-FROM disco
-JOIN emprestimo ON emprestimo.ID_disc = disco.ID_disc
-WHERE emprestimo.ID_disc NOT IN (SELECT emprestimo.ID_disc WHERE emprestimo.ID_disc = NULL)";
+        FROM disco
+        JOIN emprestimo ON emprestimo.ID_disc = disco.ID_disc
+        WHERE emprestimo.ID_disc NOT IN (SELECT emprestimo.ID_disc WHERE emprestimo.ID_disc = NULL)";
 
-if($query = null || "") {
-    $action = "Emprestar";
-} else {
-    $action = "Devolver";
-}
-
+    if($query = null || "") {
+        $action = "Emprestar";
+    } else {
+        $action = "Dev/Emp";
+    }
+        }
         echo "<tr>";
         echo "<td>{$disc['Titulo_disc']}</td>";
         echo "<td>{$disc['Nome_Art']}</td>";
